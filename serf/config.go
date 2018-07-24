@@ -242,6 +242,8 @@ type Config struct {
 	// Merge can be optionally provided to intercept a cluster merge
 	// and conditionally abort the merge.
 	Merge MergeDelegate
+
+	PushPull PushPullDelegate
 }
 
 // Init allocates the subdata structures

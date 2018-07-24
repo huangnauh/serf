@@ -66,6 +66,7 @@ type messagePushPull struct {
 	EventLTime   LamportTime            // Lamport time for event clock
 	Events       []*userEvents          // Recent events
 	QueryLTime   LamportTime            // Lamport time for query clock
+	Payload      []byte                 // PushPull payload
 }
 
 // messageUserEvent is used for user-generated events

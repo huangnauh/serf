@@ -173,6 +173,7 @@ func (d *delegate) LocalState(join bool) []byte {
 		EventLTime:   d.serf.eventClock.Time(),
 		Events:       d.serf.eventBuffer,
 		QueryLTime:   d.serf.queryClock.Time(),
+		Payload:      d.serf.config.PushPull.GetPayload(),
 	}
 
 	// Add all the join LTimes
@@ -266,6 +267,7 @@ func (d *delegate) MergeRemoteState(buf []byte, isJoin bool) {
 		d.serf.eventLock.Unlock()
 	}
 
+	d.serf.config.PushPull.SetPayload(pp.Payload)
 	// Process all the events
 	userEvent := messageUserEvent{}
 	for _, events := range pp.Events {
